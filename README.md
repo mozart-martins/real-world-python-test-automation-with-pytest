@@ -12,3 +12,5 @@ Entrar no diretório gist:
 > -m um_nome_qualquer é o nome de uma custom mark
 > 
 > -s exibe os prints de dentro de uma função de testes
+>
+> --durations=0 Exibe a duração dos testes
