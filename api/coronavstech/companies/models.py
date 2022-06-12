@@ -11,7 +11,9 @@ class Company(models.Model):
 
     name = models.CharField(max_length=100, unique=True)
     status = models.CharField(
-        max_length=20, choices=CompanyStatus.choices, default=CompanyStatus.HIRING,
+        max_length=20,
+        choices=CompanyStatus.choices,
+        default=CompanyStatus.HIRING,
     )
     last_update = models.DateTimeField(default=now, editable=True)
     application_link = URLField(blank=True)
