@@ -18,6 +18,3 @@ Entrar no diretório gist:
 > --durations=0 Exibe a duração dos testes
 
 > -k "palavra-chave and not outra-coisa" Executa todos os testes cujos nomes possuam a palavra chave e não executa os que contenham outra-coisa.
-
-![image](https://user-images.githubusercontent.com/49461099/173208797-af4395d7-488b-4436-b32e-e483c55e476e.png)
-
