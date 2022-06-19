@@ -123,3 +123,12 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+# Para o Gmail permitir este funcionamento, é preciso flexibilizar as regras no site do Gmail.
+EMAIL_HOST_USER = 'jao@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'senha_errada'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
