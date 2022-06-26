@@ -25,11 +25,10 @@ def test_send_email_should_succeed(mailoutbox, settings) -> None:
 
     assert len(mailoutbox[0].message) == "Cool Message"
 
+
 @pytest.mark.xfail
 def test_send_email_without_arguments_should_send_empty_email(client) -> None:
-    with patch(
-        "coronavstech.companies.views.send_email"
-    ) as mocked_send_email_function:
+    with patch("coronavstech.companies.views.send_email") as mocked_send_email_function:
 
         response = client.post(path="/send-email")
         response_content = json.loads(response.content)
@@ -43,6 +42,7 @@ def test_send_email_without_arguments_should_send_empty_email(client) -> None:
             from_email="meu_amigo_pedro@gmail.com",
             recipient_list=["israeltechlayoffs@gmail.com"],
         )
+
 
 @pytest.mark.xfail
 def test_send_email_with_get_verb_should_fail(client) -> None:

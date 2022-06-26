@@ -29,10 +29,10 @@ def send_company_email(request: Request) -> Response:
         }
     """
     send_mail(
-        request.data.get("subject"),
-        request.data.get("message"),
-        'from@example.com',
-        ['to@example.com'],
+        subject=request.data.get("subject"),
+        message=request.data.get("message"),
+        from_email='from@example.com',
+        recipient_list=['to@example.com'],
         fail_silently=False,
     )
     
