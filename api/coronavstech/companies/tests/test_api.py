@@ -5,7 +5,7 @@ import json
 import pytest
 from django.urls import reverse
 
-from ..models import Company
+from companies.models import Company
 
 companies_url = reverse("companies-list")
 
