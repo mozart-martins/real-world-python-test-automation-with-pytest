@@ -96,28 +96,12 @@ def test_should_skip(client) -> None:
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LEARNING ABOUT FIXTURE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
-@pytest.fixture
-def companies(request, company) -> List[Company]:
-    companies = []
-    names = request.param
-    for name in names:
-        companies.append(company(name=name))
-    return companies
-
-
-@pytest.fixture
-def company(**kwargs):
-    def _company_factory(**kwargs) -> Company:
-        company_name = kwargs.pop("name", "Test Company Inc")
-        return Company.objects.create(name=company_name, **kwargs)
-    
-    return _company_factory
+# All fixtures are in conftest.py file.
 
 @pytest.mark.parametrize(
     "companies",
     [["TikTok", "Twich", "Test Company Inc"], ["Facebook", "Instagram"]],
-    ids=["3 T Companies", "Zuckerber's Companies"],
+    ids=["3 T Companies", "Zuckerberg's Companies"],
     indirect=True
 )
 def test_multiple_companies_exists_should_succeed(client, companies) -> None:
