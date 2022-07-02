@@ -1,5 +1,7 @@
 # Real World Python Test Automation with Pytest
 
+## Rever a secao 17 (Server Agnostic API Testing) do curso para rever como testar API de forma agnostica com o requests e como fazer o mock com o responses: ambos deve ser instalados pip install requests responses. O arquivo com os codigos esta em api/coronavstech/companies/tests/test_generic_api.py.
+
 DICA: O diretório gist dá a visão geral do Pytest.
 
 > pip install pytest pytest-django
