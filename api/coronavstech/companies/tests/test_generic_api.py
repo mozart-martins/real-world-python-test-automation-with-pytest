@@ -17,11 +17,9 @@ def test_zero_companies_django_agnostic() -> None:
 
 
 def test_create_company_with_layoffs_django_agostic() -> None:
-    company_name = Faker().name() + " Co."
-
     response = requests.post(
         url=testing_env_companies_env,
-        json={"name": company_name, "status": "Layoffs"},
+        json={"name": Faker().name(), "status": "Layoffs"},
     )
 
     assert response.status_code == 201
@@ -47,23 +45,35 @@ def test_pokeapi() -> None:
     assert response_content["results"][0]["name"] == "bulbasaur"
 
 
+# this package that is able to mock response. You should look for the documentation
 import responses
-
-
 @pytest.mark.poke
 @responses.activate
 def test_mocked_pokeapi() -> None:
+    # this code mocks the api response
     responses.add(
         method=responses.GET,
         url="https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0",
-        json={"results": [{"name": "bulbasaur"}]},
+        json={"results": [{"name": "pikachu"}]},
         status=200,
     )
 
+    assert process_pokeapi() == 25
+    
+    
+def process_pokeapi() -> None:
     response = requests.get(
         url="https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
     )
     response_content = json.loads(response.content)
 
-    assert response.status_code == 200
-    assert response_content["results"][0]["name"] == "bulbasaur"
+    if response.status_code != 200:
+        raise ValueError("Request para a Pokeapi FALHOU!")
+        
+    pokemon_name = response_content["results"][0]["name"]
+
+    if pokemon_name == "pikachu":
+        # Yay! A resposta esta mockada 
+        return 25
+    
+    return 42
