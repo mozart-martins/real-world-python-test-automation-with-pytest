@@ -68,7 +68,7 @@ def process_pokeapi() -> None:
     response_content = json.loads(response.content)
 
     if response.status_code != 200:
-        raise ValueError("Request para a Pokeapi FALHOU!")
+        raise ValueError("Request para a Pokeapi mockada FALHOU!")
         
     pokemon_name = response_content["results"][0]["name"]
 

@@ -107,6 +107,5 @@ def test_should_skip(client) -> None:
 )
 def test_multiple_companies_exists_should_succeed(client, companies) -> None:
     company_names = set(map(lambda x: x.name, companies))
-    print(company_names)
     response_companies = client.get(companies_url).json()
     assert len(company_names) == len(response_companies)
