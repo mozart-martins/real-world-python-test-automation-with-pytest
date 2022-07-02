@@ -98,11 +98,12 @@ def test_should_skip(client) -> None:
 
 # All fixtures are in conftest.py file.
 
+
 @pytest.mark.parametrize(
     "companies",
     [["TikTok", "Twich", "Test Company Inc"], ["Facebook", "Instagram"]],
     ids=["3 T Companies", "Zuckerberg's Companies"],
-    indirect=True
+    indirect=True,
 )
 def test_multiple_companies_exists_should_succeed(client, companies) -> None:
     company_names = set(map(lambda x: x.name, companies))
